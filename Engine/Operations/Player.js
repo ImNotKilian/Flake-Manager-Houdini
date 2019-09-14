@@ -37,11 +37,11 @@ class Player extends Base{
 
     async handle_password(){
         this.user = await this.database.execute('penguin', `findOne`, {where: {Username: `${this.username}`}});
-        let password = await this.crypto.generateBcrypt(this.password);
+        let password = await this.crypto.generateBcrypt(this.password, this.salt);
         let error = this.displays.find('/same_password');
         let success = this.displays.find('/pw_success');
         let query = JSON.parse(`{"Password":"${password}", "Username":"${this.username}"}`);
-        if(await this.crypto.compare(this.crypto.getLoginHash(this.password), this.crypto.sanatize_password(this.user.Password)))
+        if(await this.crypto.compare(this.crypto.getLoginHash(this.password, this.salt), this.crypto.sanatize_password(this.user.Password)))
             return this.response.render(error.page, error.ejs);
 
         await this.database.update('penguin', query);

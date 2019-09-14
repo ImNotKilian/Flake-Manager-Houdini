@@ -29,7 +29,7 @@ class Login extends Base{
             return this.response.render(data.page, data.ejs);
         }
     
-        else if(!await this.crypto.compare(this.crypto.getLoginHash(this.password), this.crypto.sanatize_password(user.Password))){
+        else if(!await this.crypto.compare(this.crypto.getLoginHash(this.password, this.salt), this.crypto.sanatize_password(user.Password))){
             let data = this.displays.find('/incorrect_password');
             return this.response.render(data.page, data.ejs);
         }

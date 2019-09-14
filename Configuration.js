@@ -17,7 +17,9 @@ class Configuration{
         this.database_password = ''; /* Set this to your MySQL password */
         this.database_port = 3306;
         this.database_name = 'Houdini';
+        this.database_dialect = 'mysql';
 
+        this.salt = 'Y(02.>\'H}t":E1'; /* If you are using the AS3 client, just change this salt to: 'a1ebe00441f5aecb185d0ec178ca2305Y(02.>'H}t\":E1_root' */
         this.port = 3000;
         this.site_key = ''; /* Register recaptcha keys from google and add your site key here. */
         this.secret_key = ''; /* Register recaptcha keys from google and add your secret key here. */

@@ -14,7 +14,7 @@ class Database extends Base{
             username: this.database_username,
             password: this.database_password,
             database: this.database_name,
-            dialect: 'mysql',
+            dialect: this.database_dialect,
             logging: false,
             define: {
                 timestamps: false,

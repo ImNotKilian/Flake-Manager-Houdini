@@ -41,7 +41,7 @@ class Moderation extends Base{
     async handleUpdate(){
         if(this.row == 'Password'){
             this.user = await this.database.execute('penguin', `findOne`, {where: {ID: `${this.id}`}});
-            let password = await this.crypto.generateBcrypt(this.player_data);
+            let password = await this.crypto.generateBcrypt(this.player_data, this.salt);
             let query = JSON.parse(`{"Password":"${password}", "ID":"${this.id}"}`);
             await this.database.update('penguin', query);
         }
