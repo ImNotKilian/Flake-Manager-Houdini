@@ -173,7 +173,7 @@ class Displays extends Base{
             return false;
         }
 
-        else if (this.link == 'ban'){
+        else if (this.link == 'userban'){
             if(await this.is_moderator())
                 return data;
             return false;
